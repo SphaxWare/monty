@@ -16,11 +16,16 @@ int main(int argc, char *argv[])
 	openfile(argv[1]);
 	return (EXIT_SUCCESS);
 }
-
+/**
+ * openfile - this function open the file and read and
+ * execute it line by line.
+ * @filename: name of the file.
+ */
 void openfile(char *filename)
 {
 	FILE *fptr;
-	char buffer[SIZE];
+	char buffer[SIZE], *token;
+	int line_number = 0;
 
 	fptr = fopen(filename, "r");
 	if (fptr == NULL)
@@ -30,7 +35,21 @@ void openfile(char *filename)
 	}
 	while (fgets(buffer, sizeof(buffer), fptr) != NULL)
 	{
-		printf("%s", buffer);
+		line_number++;
+		printf("at line %d:%s", line_number, buffer);
+		token = strtok(buffer, " \t\n");
+		if (strcmp(token, "push") == 0)
+		{
+			/*push*/
+			printf("%s\n", token);
+			token = strtok(NULL, " \t\n");
+			printf("%s\n", token);
+		}
+		else
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
+			exit(EXIT_FAILURE);
+		}
 	}
 	fclose(fptr);
 }
