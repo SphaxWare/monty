@@ -9,8 +9,8 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	char *token;
 
-	token = strtok(NULL, " \t\n");
-	printf("from push :%s\n", token);
+	token = strtok(NULL, " \t\n"); /*convert this with atoi*/
+	(void)token;
 	(void)stack;
 	(void)line_number;
 }
@@ -22,7 +22,6 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	printf("from pall : print all values on the stack\n");
 	(void)stack;
 	(void)line_number;
 }

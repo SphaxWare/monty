@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 	openfile(argv[1], &stack);
 	return (EXIT_SUCCESS);
 }
+
 /**
  * openfile - this function open the file and read and
  * execute it line by line.
@@ -32,12 +33,8 @@ void openfile(char *filename, stack_t **stack)
 	int line_number = 0, i;
 
 	instruction_t instructions[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"nop", nop},
-		{"pop", pop},
-		{NULL, NULL}
+		{"push", push}, {"pall", pall}, {"pint", pint},
+		{"nop", nop}, {"pop", pop}, { NULL, NULL}
 	};
 	fptr = fopen(filename, "r");
 	if (fptr == NULL)
