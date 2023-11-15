@@ -35,6 +35,7 @@ void openfile(char *filename, stack_t **stack)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	fptr = fopen(filename, "r");
@@ -46,7 +47,6 @@ void openfile(char *filename, stack_t **stack)
 	while (fgets(buffer, sizeof(buffer), fptr) != NULL)
 	{
 		line_number++;
-		printf("at line %d:%s", line_number, buffer);
 		token = strtok(buffer, " \t\n");
 		for (i = 0; instructions[i].opcode != NULL; i++)
 		{
