@@ -8,12 +8,14 @@
  */
 int main(int argc, char *argv[])
 {
+	stack_t *stack;
 	if (argc < 2)
 	{
 		printf("USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
-	openfile(argv[1]);
+	stack = NULL; /* initialize the stack */
+	openfile(argv[1], &stack);
 	return (EXIT_SUCCESS);
 }
 /**
@@ -21,12 +23,17 @@ int main(int argc, char *argv[])
  * execute it line by line.
  * @filename: name of the file.
  */
-void openfile(char *filename)
+void openfile(char *filename, stack_t **stack)
 {
 	FILE *fptr;
 	char buffer[SIZE], *token;
-	int line_number = 0;
+	int line_number = 0, i;
 
+	instruction_t instructions[] = {
+		{"push", push},
+		{"pall", pall},
+		{NULL, NULL}
+	};
 	fptr = fopen(filename, "r");
 	if (fptr == NULL)
 	{
@@ -38,14 +45,15 @@ void openfile(char *filename)
 		line_number++;
 		printf("at line %d:%s", line_number, buffer);
 		token = strtok(buffer, " \t\n");
-		if (strcmp(token, "push") == 0)
+		for (i = 0; instructions[i].opcode != NULL; i++)
 		{
-			/*push*/
-			printf("%s\n", token);
-			token = strtok(NULL, " \t\n");
-			printf("%s\n", token);
+			if (strcmp(token, instructions[i].opcode) == 0)
+			{
+				instructions[i].f(stack, line_number);
+				break;
+			}
 		}
-		else
+		if (instructions[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 			exit(EXIT_FAILURE);
