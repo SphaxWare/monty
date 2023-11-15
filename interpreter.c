@@ -36,6 +36,7 @@ void openfile(char *filename, stack_t **stack)
 		{"pall", pall},
 		{"pint", pint},
 		{"nop", nop},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	fptr = fopen(filename, "r");
