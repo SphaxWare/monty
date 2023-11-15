@@ -1,27 +1,64 @@
+#include <stdlib.h>
 #include "monty.h"
 
 /**
- * push - this function push an int on top of the stack
- * @stack:ouble pointer to the stack.
- * @line_number: line number.
- */
+ * push - pushes an item unto the stack
+ * @stack: doubly linked list or stack
+ * @line_number: line number
+ * Definition - pushed an integer unto the stack
+ * Return: void
+*/
+
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *token;
+	stack_t *iter;
+	stack_t *new;
+	int n_value;
 
-	token = strtok(NULL, " \t\n"); /*convert this with atoi*/
-	(void)token;
-	(void)stack;
 	(void)line_number;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	token = strtok(NULL, " \t\n");
+	n_value = atoi(token);
+
+	new->next = NULL;
+	new->prev = NULL;
+	new->n = n_value;
+	iter = *stack;
+	if (iter == NULL)
+		*stack = new;
+	else
+	{
+		*stack = new;
+		new->next = iter;
+		iter->prev = new;
+	}
 }
 
 /**
- * pall - this function push an int on top of the stack
- * @stack:ouble pointer to the stack.
- * @line_number: line number.
- */
+ * pall - prints items in a stack from top to bottom
+ * @stack: stack to be printed
+ * @line_number: line number
+ * Definition - prints values in a stack
+ * Return: void
+*/
+
 void pall(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
+	stack_t *iter;
+
+	iter = *stack;
 	(void)line_number;
+
+	while (iter != NULL)
+	{
+		printf("%d\n", iter->n);
+		iter = iter->next;
+	}
 }
