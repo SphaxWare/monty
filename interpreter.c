@@ -9,6 +9,7 @@
 int main(int argc, char *argv[])
 {
 	stack_t *stack;
+
 	if (argc < 2)
 	{
 		printf("USAGE: monty file\n");
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
  * openfile - this function open the file and read and
  * execute it line by line.
  * @filename: name of the file.
+ * @stack: pointer to the stack.
  */
 void openfile(char *filename, stack_t **stack)
 {
@@ -56,6 +58,7 @@ void openfile(char *filename, stack_t **stack)
 		if (instructions[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
+			fclose(fptr);
 			exit(EXIT_FAILURE);
 		}
 	}

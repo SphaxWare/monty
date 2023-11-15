@@ -15,6 +15,11 @@ void push(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 }
 
+/**
+ * pall - this function push an int on top of the stack
+ * @stack:ouble pointer to the stack.
+ * @line_number: line number.
+ */
 void pall(stack_t **stack, unsigned int line_number)
 {
 	printf("from pall : print all values on the stack\n");
