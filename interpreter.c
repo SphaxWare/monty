@@ -46,7 +46,7 @@ void openfile(char *filename, stack_t **stack)
 	{
 		line_number++;
 		token = strtok(buffer, " \t\n");
-		if (token == NULL)
+		if (token == NULL || token[0] == '#')
 			continue;
 		for (i = 0; instructions[i].opcode != NULL; i++)
 		{
