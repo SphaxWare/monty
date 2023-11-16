@@ -33,9 +33,8 @@ void openfile(char *filename, stack_t **stack)
 	int line_number = 0, i;
 
 	instruction_t instructions[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"nop", nop}, {"pop", pop}, {"swap", swap}, { NULL, NULL}
-	};
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"nop", nop},
+		{"pop", pop}, {"swap", swap}, {"add", add}, { NULL, NULL}};
 	fptr = fopen(filename, "r");
 	if (fptr == NULL)
 	{
