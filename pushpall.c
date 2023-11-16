@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	int n_value;
 
 	token = strtok(NULL, " \t\n");
-	if (!token)
+	if (!token || (check_if_integer(token) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -63,4 +63,24 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", iter->n);
 		iter = iter->next;
 	}
+}
+
+/**
+ * check_if_integer - checks if a string can be converted to an integer
+ * @str: string to be checked
+ * Description - checks if a string contains non-digit characters
+ * Return: 1, if string can be converted to integer, 0 if not.
+*/
+
+int check_if_integer(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		if (!(str[i] >= 48 && str[i] <= 56))
+			return (0);
+		i++;
+	}
+	return (1);
 }

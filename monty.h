@@ -48,4 +48,5 @@ void pop(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 
 void free_stack(stack_t *head);
+int check_if_integer(char *str);
 #endif
