@@ -7,7 +7,7 @@
  * @line_number: line number
  * Definition - pushed an integer unto the stack
  * Return: void
-*/
+ */
 
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -25,6 +25,12 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(NULL, " \t\n");
+	if (!token)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free(new);
+		exit(EXIT_FAILURE);
+	}
 	n_value = atoi(token);
 
 	new->next = NULL;
@@ -47,7 +53,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @line_number: line number
  * Definition - prints values in a stack
  * Return: void
-*/
+ */
 
 void pall(stack_t **stack, unsigned int line_number)
 {
