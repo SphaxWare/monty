@@ -15,7 +15,13 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int n_value;
 
-	(void)line_number;
+	token = strtok(NULL, " \t\n");
+	if (!token)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n_value = atoi(token);
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -23,15 +29,6 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(NULL, " \t\n");
-	if (!token)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free(new);
-		exit(EXIT_FAILURE);
-	}
-	n_value = atoi(token);
-
 	new->next = NULL;
 	new->prev = NULL;
 	new->n = n_value;
