@@ -8,5 +8,8 @@ pint
 
 
       push 55
-      run
+   pall
+
+   swap
+
    pall

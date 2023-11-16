@@ -34,7 +34,7 @@ void openfile(char *filename, stack_t **stack)
 
 	instruction_t instructions[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"nop", nop}, {"pop", pop}, { NULL, NULL}
+		{"nop", nop}, {"pop", pop}, {"swap", swap}, { NULL, NULL}
 	};
 	fptr = fopen(filename, "r");
 	if (fptr == NULL)
