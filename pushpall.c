@@ -1,11 +1,10 @@
-#include <stdlib.h>
 #include "monty.h"
 
 /**
  * push - pushes an item unto the stack
  * @stack: doubly linked list or stack
  * @line_number: line number
- * Definition - pushed an integer unto the stack
+ * Definition - pushes an integer unto the stack
  * Return: void
 */
 
