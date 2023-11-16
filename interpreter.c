@@ -59,13 +59,13 @@ void openfile(char *filename, stack_t **stack)
 		if (instructions[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-			free(*stack);
+			free_stack(*stack);
 			stack = NULL;
 			fclose(fptr);
 			exit(EXIT_FAILURE);
 		}
 	}
-	free(*stack);
+	free_stack(*stack);
 	stack = NULL;
 	fclose(fptr);
 }

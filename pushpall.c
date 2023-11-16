@@ -19,6 +19,13 @@ void push(stack_t **stack, unsigned int line_number)
 	if (!token || (check_if_integer(token) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(*stack);
+		/*
+		 * All memory leaks have been handled except what happens here
+		 * when the program exits without closing the file. Needs
+		 * pointer to file or a way to communicate to main to close the
+		 * file. Should we make use of child processes?
+		 */
 		exit(EXIT_FAILURE);
 	}
 	n_value = atoi(token);
