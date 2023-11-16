@@ -46,6 +46,8 @@ void openfile(char *filename, stack_t **stack)
 	{
 		line_number++;
 		token = strtok(buffer, " \t\n");
+		if (token == NULL)
+			continue;
 		for (i = 0; instructions[i].opcode != NULL; i++)
 		{
 			if (strcmp(token, instructions[i].opcode) == 0)
@@ -62,6 +64,6 @@ void openfile(char *filename, stack_t **stack)
 			exit(EXIT_FAILURE);
 		}
 	}
-	/*free(stack);*/
+	free(*stack);
 	fclose(fptr);
 }
