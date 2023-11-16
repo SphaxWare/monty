@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
 	stack_t *stack;
 
-	if (argc < 2)
+	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
 		return (EXIT_FAILURE);
