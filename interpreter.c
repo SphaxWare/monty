@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- * main - this is the main.
- * @argc:we dont care about it
- * @argv : w.
- * Return: 0.
+ * main -main function or entry point
+ * @argc: we dont care about it
+ * @argv: string arguments to main
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
