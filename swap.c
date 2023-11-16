@@ -15,8 +15,8 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if (stack_len(*stack) < 2)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n",
-		line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fclose(fptr);
 		exit(EXIT_FAILURE);
 	}
 	swap_val = stack_p->n;

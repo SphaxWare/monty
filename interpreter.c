@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 	return (EXIT_SUCCESS);
 }
 
+FILE *fptr;
 /**
  * openfile - this function open the file and read and
  * execute it line by line.
@@ -28,7 +29,6 @@ int main(int argc, char *argv[])
  */
 void openfile(char *filename, stack_t **stack)
 {
-	FILE *fptr;
 	char buffer[SIZE], *token;
 	int line_number = 0, i;
 

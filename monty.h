@@ -9,6 +9,7 @@
 #include <stdarg.h>
 
 #define SIZE 128
+extern FILE *fptr;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

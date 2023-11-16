@@ -26,6 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 		 * pointer to file or a way to communicate to main to close the
 		 * file. Should we make use of child processes?
 		 */
+		fclose(fptr);
 		exit(EXIT_FAILURE);
 	}
 	n_value = atoi(token);
@@ -34,6 +35,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose(fptr);
 		exit(EXIT_FAILURE);
 	}
 	new->next = NULL;
