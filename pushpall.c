@@ -21,12 +21,6 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(*stack);
 		*stack = NULL;
-		/*
-		 * All memory leaks have been handled except what happens here
-		 * when the program exits without closing the file. Needs
-		 * pointer to file or a way to communicate to main to close the
-		 * file. Should we make use of child processes?
-		 */
 		fclose(fptr);
 		exit(EXIT_FAILURE);
 	}
@@ -35,6 +29,8 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(*stack);
+		*stack = NULL;
 		fclose(fptr);
 		exit(EXIT_FAILURE);
 	}
