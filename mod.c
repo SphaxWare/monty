@@ -7,6 +7,7 @@
  * @line_number: current line number
  * Return: void
  */
+
 void stack_mod(stack_t **stack, unsigned int line_number)
 {
 	if (stack_len(*stack) < 2)

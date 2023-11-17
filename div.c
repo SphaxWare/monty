@@ -8,6 +8,7 @@
  * by the top element of the stack.
  * Return: void
 */
+
 void stack_div(stack_t **stack, unsigned int line_number)
 {
 	if (stack_len(*stack) < 2)
