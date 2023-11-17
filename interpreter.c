@@ -60,12 +60,12 @@ void openfile(char *filename, stack_t **stack)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 			free_stack(*stack);
-			stack = NULL;
+			*stack = NULL;
 			fclose(fptr);
 			exit(EXIT_FAILURE);
 		}
 	}
 	free_stack(*stack);
-	stack = NULL;
+	*stack = NULL;
 	fclose(fptr);
 }

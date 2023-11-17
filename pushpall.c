@@ -20,6 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(*stack);
+		*stack = NULL;
 		/*
 		 * All memory leaks have been handled except what happens here
 		 * when the program exits without closing the file. Needs
@@ -30,7 +31,6 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	n_value = atoi(token);
-
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
